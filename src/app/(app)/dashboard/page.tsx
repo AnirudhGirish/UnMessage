@@ -15,6 +15,7 @@ import { Loader2, RefreshCcw } from 'lucide-react';
 import MessageCard from '@/components/MessageCard';
 
 const Dashboard = () => {
+  console.log("In dashboard app of (app)")
   const [isSwitchLoading, setIsSwitchLoading] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -76,6 +77,7 @@ const Dashboard = () => {
 
   useEffect(()=>{
     if(!session || !session.user){
+      console.log("Dashboard error")
       return
     }
     fetchMessages();
@@ -112,7 +114,8 @@ const Dashboard = () => {
     })
   }
 
-  if(!session || !session.user){
+  if(!session || !session?.user){
+    console.log("Dashboard user error")
     return <div>Please Login!!!!</div>
   }
 

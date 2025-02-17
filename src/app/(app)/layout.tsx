@@ -6,6 +6,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  console.log("In layout of (app)")
   return (
           <main>
             <Navbar/>

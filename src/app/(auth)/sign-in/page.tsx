@@ -14,6 +14,7 @@ import { signInSchema } from "@/schemas/signInSchema";
 import { signIn } from "next-auth/react";
 
 const Page = () => {
+  console.log("In signin of (auth)")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { toast } = useToast();
   const router = useRouter();
@@ -46,7 +47,7 @@ const Page = () => {
     }
     if(result?.url){
       setIsSubmitting(false);
-      router.replace('/dashboard')
+      router.replace('http://localhost:3000/dashboard')
     }
   }
   return (

@@ -14,6 +14,7 @@ import { Loader2 } from 'lucide-react';
 import * as z from 'zod';
 
 const VerifyAccount = () => {
+  console.log("In verify of (auth)")
   const router = useRouter();
   const param = useParams<{username:string}>();
   const {toast} = useToast();

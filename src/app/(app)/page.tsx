@@ -12,6 +12,7 @@ import messages from '@/messages.json';
 import Autoplay from 'embla-carousel-autoplay';
 
 const Home = () => {
+  console.log("In page of (app)")
   return (
     <div className="flex flex-col min-h-screen">
       <div className='flex-grow flex flex-col items-center justify-center px-4 md:px-24 py-12'>
