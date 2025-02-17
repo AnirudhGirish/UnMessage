@@ -11,5 +11,5 @@ export const usernameValidation = z
 export const signUpschema = z.object({
     username: usernameValidation,
     email: z.string().email({message:"Invalid email address"}),
-    password: z.string().min(5, {message: "Password needs to be minimum 5 characters"}).max(15,{message:"Password ca be max 15 characters long"})
-})
+    password: z.string().min(5, {message: "Password needs to be minimum 5 characters"}).max(15,{message:"Password can be max 15 characters long"})
+});

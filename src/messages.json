@@ -1,0 +1,28 @@
+[
+    {
+      "title": "Message from Joe",
+      "content": "Please suggest some good books.",
+      "received": "10 minutes ago"
+    },
+    {
+      "title": "Message from Alice",
+      "content": "How's the weather today?",
+      "received": "1 hour ago"
+    },
+    {
+      "title": "Message from Bob",
+      "content": "Let's catch up later this week.",
+      "received": "3 hours ago"
+    },
+    {
+      "title": "Message from Sarah",
+      "content": "Can you send me the report by EOD?",
+      "received": "1 day ago"
+    },
+    {
+      "title": "Message from Alex",
+      "content": "Do you have time for a quick call?",
+      "received": "2 days ago"
+    }
+  ]
+  
