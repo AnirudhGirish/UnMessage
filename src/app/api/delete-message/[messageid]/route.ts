@@ -31,7 +31,7 @@ export async function DELETE(request:Request, {params}:{params:{messageid: strin
         }
         return Response.json({
             success:true,
-            message:"Message deleted successfullu"
+            message:"Message deleted successfully"
         },{status:200})
     } catch (error) {
         console.log("Error in message delete route")
