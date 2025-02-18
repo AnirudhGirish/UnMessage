@@ -13,7 +13,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  console.log("In main layout")
   return (
     <html lang="en">
       <AuthProvider>

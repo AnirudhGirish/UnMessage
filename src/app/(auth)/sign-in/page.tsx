@@ -14,7 +14,6 @@ import { signInSchema } from "@/schemas/signInSchema";
 import { signIn } from "next-auth/react";
 
 const Page = () => {
-  console.log("In signin of (auth)")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { toast } = useToast();
   const router = useRouter();

@@ -16,7 +16,6 @@ import Link from "next/link";
 import * as z from "zod";
 
 const Page = () => {
-  console.log("In signup of (auth)")
   const [username, setUsername] = useState("");
   const [usernameMessage, setUsernameMessagge] = useState("");
   const [isCheckingUsername, setIsCheckingUsername] = useState(false);
