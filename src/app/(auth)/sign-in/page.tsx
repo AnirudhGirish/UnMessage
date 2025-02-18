@@ -47,7 +47,8 @@ const Page = () => {
     }
     if(result?.url){
       setIsSubmitting(false);
-      router.replace('http://localhost:3000/dashboard')
+      router.push(result.url || "/dashboard")
+      // router.replace('/dashboard')
     }
   }
   return (

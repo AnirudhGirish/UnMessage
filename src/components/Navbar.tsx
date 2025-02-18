@@ -16,7 +16,7 @@ const Navbar = () => {
                 session ? (
                     <>
                     <span className='mr-4'>Welcome, {user?.username || user?.email}</span>
-                    <Button className='w-full md:w-auto' onClick={()=> signOut()}>Logout</Button>
+                    <Button className='w-full md:w-auto' onClick={()=> signOut({redirect:true, callbackUrl: "/" })}>Logout</Button>
                     </>
                 ) : (
                     <Link href='/sign-in'>

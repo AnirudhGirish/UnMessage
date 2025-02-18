@@ -1,7 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+
+
 };
+
+module.exports = {
+  env: {
+      NEXTAUTH_URL: "http://localhost:3000", // Ensure this matches your dev environment
+  },
+}
 
 export default nextConfig;

@@ -15,7 +15,6 @@ import { useForm } from 'react-hook-form';
 import axios, { AxiosError } from 'axios';
 
 const Dashboard = () => {
-  console.log("In dashboard app of (app)")
   const [isSwitchLoading, setIsSwitchLoading] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -71,7 +70,7 @@ const Dashboard = () => {
       }
       toast({
         title:"Fetched messages",
-        description: "DB fetch successfull",
+        description: "DB fetch successfully",
         variant:"default"
       })
     } catch (error) {
@@ -115,7 +114,6 @@ const Dashboard = () => {
   }
 
   if(!session || !session?.user){
-    console.log("Dashboard user error")
     return <div>Please Login!!!!</div>
   }
 
@@ -135,7 +133,7 @@ const Dashboard = () => {
 
   return (
     <div className='my-8 mx-4 md:mx-8 lg:mx-auto p-6 bg-white rounded max-w-6xl'>
-      <h1 className='text-4xl font-bold mb-4'>
+      <h1 className='text-4xl font-bold mb-8 text-center'>
         User Dashboard
       </h1>
 
@@ -149,17 +147,19 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className='mb-4'>
+      <Separator className='border-2 border-zinc-300'/>
+
+      <div className='my-8'>
         <Switch {...register('acceptMessages')} checked={acceptMessages} onCheckedChange={handleswitchChange} disabled={isSwitchLoading} />
         <span className='ml-2'>
           Accept Messages: {acceptMessages ? 'On' : 'Off'}
         </span>
       </div>
 
-      <Separator/>
+      <Separator className='border-2 border-zinc-300'/>
 
       <Button 
-        className='mt-4'
+        className='mt-4 border-solid border-2 border-black'
         variant='outline'
         onClick={(e)=>{
           e.preventDefault();
