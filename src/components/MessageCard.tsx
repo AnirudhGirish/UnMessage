@@ -44,10 +44,11 @@ const MessageCard = ({message, onMessageDelete}:MessageCardProps) => {
         <div>
             <Card>
                 <CardHeader>
-                    <CardTitle>Card Title</CardTitle>
+                    <CardTitle className='text-center text-2xl'>{message.content}</CardTitle>
+                    <CardDescription className='text-center'>{new Date(message.createdAt).toLocaleString()}</CardDescription>
                     <AlertDialog>
                         <AlertDialogTrigger asChild>
-                          <Button variant="destructive"><X className='w-5 h-5'/></Button>
+                          <Button variant="destructive" className='w-1/2 mx-auto'><X className='w-2 h-3'/></Button>
                         </AlertDialogTrigger>
                         <AlertDialogContent>
                           <AlertDialogHeader>
@@ -62,7 +63,6 @@ const MessageCard = ({message, onMessageDelete}:MessageCardProps) => {
                           </AlertDialogFooter>
                         </AlertDialogContent>
                      </AlertDialog>
-                    <CardDescription>Card Description</CardDescription>
                 </CardHeader>
 
             </Card>

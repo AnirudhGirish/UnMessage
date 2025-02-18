@@ -68,7 +68,7 @@ export async function GET(request:Request){
         return Response.json({
             success:true,
             messages:"User accept status found",
-            isAccepting: foundUser.isAccepting
+            isAcceptingMessages: foundUser.isAccepting
         },{status:200})
     } catch (error) {
         console.log("Failed to fetch user status of accept message");

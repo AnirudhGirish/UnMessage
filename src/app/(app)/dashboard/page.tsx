@@ -1,18 +1,18 @@
 'use client'
 import { acceptMessageSchema } from '@/schemas/acceptMessageSchema';
+import React, { useCallback, useEffect, useState } from 'react';
+import { Separator } from '@/components/ui/separator';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useToast } from '@/hooks/use-toast';
+import { Loader2, RefreshCcw } from 'lucide-react';
+import MessageCard from '@/components/MessageCard';
 import { Message, User } from '@/model/User.model';
-import { useSession } from 'next-auth/react';
-import { useForm } from 'react-hook-form';
-import React, { useCallback, useEffect, useState } from 'react'
-import axios, { AxiosError } from 'axios';
 import { ApiResponse } from '@/types/ApiResponse';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
-import { Separator } from '@/components/ui/separator';
-import { Loader2, RefreshCcw } from 'lucide-react';
-import MessageCard from '@/components/MessageCard';
+import { useToast } from '@/hooks/use-toast';
+import { useSession } from 'next-auth/react';
+import { useForm } from 'react-hook-form';
+import axios, { AxiosError } from 'axios';
 
 const Dashboard = () => {
   console.log("In dashboard app of (app)")
@@ -37,7 +37,12 @@ const Dashboard = () => {
     setIsSwitchLoading(true);
     try {
       const response = await axios.get<ApiResponse>('/api/accept-messages');
-      setValue('acceptMessages', response.data.isAcceptingMessages!)
+      setValue('acceptMessages', response.data.isAcceptingMessages|| false)
+      toast({
+        title:"Refreshed messages",
+        description: "Showing latest messages",
+        variant:"default"
+      })
     } catch (error) {
       const axiosError = error as  AxiosError<ApiResponse>;
       toast({
@@ -56,12 +61,19 @@ const Dashboard = () => {
     try {
       const response = await axios.get<ApiResponse>('/api/get-messages');
       setMessages(response.data.messages || [])
+      console.log(response.data.messages)
       if(refresh){
         toast({
           title:"Refreshed messages",
           description: "Showing latest messages",
+          variant:"default"
         })
       }
+      toast({
+        title:"Fetched messages",
+        description: "DB fetch successfull",
+        variant:"default"
+      })
     } catch (error) {
       const axiosError = error as  AxiosError<ApiResponse>;
       toast({
@@ -102,6 +114,11 @@ const Dashboard = () => {
     }
   }
 
+  if(!session || !session?.user){
+    console.log("Dashboard user error")
+    return <div>Please Login!!!!</div>
+  }
+
   const {username} = session?.user as User 
   const baseUrl = `${window.location.protocol}://${window.location.host}`;
   const profileUrl = `${baseUrl}/user/${username}`;
@@ -114,13 +131,10 @@ const Dashboard = () => {
     })
   }
 
-  if(!session || !session?.user){
-    console.log("Dashboard user error")
-    return <div>Please Login!!!!</div>
-  }
+
 
   return (
-    <div className='my-8 mx-4 md:mx-8 lg:mx-auto p-6 bg-white rounded w-full max-w-6xl'>
+    <div className='my-8 mx-4 md:mx-8 lg:mx-auto p-6 bg-white rounded max-w-6xl'>
       <h1 className='text-4xl font-bold mb-4'>
         User Dashboard
       </h1>

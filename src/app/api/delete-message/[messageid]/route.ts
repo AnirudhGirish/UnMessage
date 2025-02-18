@@ -5,7 +5,8 @@ import UserModel from "@/model/User.model";
 import { User } from "next-auth";
 
 export async function DELETE(request:Request, {params}:{params:{messageid: string}}){
-    const messageId = params.messageid
+    // const messageId = params.messageid
+    const { messageid: messageId } = await Promise.resolve(params);
     await dbConnect();
 
     const session = await getServerSession(authOptions);

@@ -4,6 +4,7 @@ import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/model/User.model";
 import { User } from "next-auth";
 import mongoose from "mongoose";
+import { NextResponse } from "next/server";
 
 export async function GET(request:Request){
     await dbConnect();
@@ -22,7 +23,7 @@ export async function GET(request:Request){
     try {
         const user = await UserModel.aggregate([
             {
-                $match:{id : userId}
+                $match:{_id : userId}
             },
             {
                 $unwind: '$messages'
@@ -39,16 +40,15 @@ export async function GET(request:Request){
                 }
             }
         ]);
-
         if(!user || user.length === 0){
             return Response.json({
                 success:false,
-                message:"No user found or no messages found"
-            },{status:401})
+                messages:"No user found or no messages found"
+            },{status:402})
         }
-        return Response.json({
+        return NextResponse.json({
             success:true,
-            message:user[0].messages
+            messages:user[0].messages
         },{status:200})
     } catch (error) {
         console.log("Unexpected server error", error);

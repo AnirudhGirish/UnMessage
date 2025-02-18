@@ -1,6 +1,5 @@
 'use client'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { useForm } from "react-hook-form";
 import { signUpschema } from "@/schemas/signUpSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useEffect, useState } from 'react';
@@ -10,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
 import axios, { AxiosError } from 'axios';
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
