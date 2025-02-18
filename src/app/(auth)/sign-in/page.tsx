@@ -33,6 +33,7 @@ const Page = () => {
     setIsSubmitting(true);
     const result = await signIn('credentials',{
       redirect:false,
+      callbackUrl: "/dashboard",
       identifier: data.identifier,
       password: data.password
     });
