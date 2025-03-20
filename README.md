@@ -126,3 +126,5 @@ This project is open-source and free to use.
 For questions or suggestions, reach out:
 
 📧 Email: anirudhgirish08@gmail.com
+
+For issues reach out to me
